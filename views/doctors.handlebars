@@ -1,0 +1,139 @@
+<div id="headcont"class="container">
+  <div id="heading" class="jumbotron">
+    <h1 class="display-3">
+      <i class="fa fa-user-md" aria-hidden="true"></i>
+      Doctors</h1>
+    <p class="lead">
+      St. Generic's Hospital Staff
+    </p>
+    <hr class="my-4">
+      <h1 class="display-title"><i class="fa fa-plus-circle" aria-hidden="true"></i> Insert New Doctor</h1>
+    <form id="adddoctor" action="/doctors" method="post">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label for="validationServer01">First Name</label>
+          <input type="text" class="form-control is-invalid" id="validationServer01" name="first_name" placeholder="Enter First Name" required>
+          <div class="invalid-feedback">
+            First Name Required
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationServer02">Middle Name</label>
+          <input type="text" class="form-control is-valid" id="validationServer02" name="middle_name" placeholder=" Enter Middle Name (Optional)">
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationServer03">Last Name</label>
+          <input type="text" class="form-control is-invalid" id="validationServer03"
+           name="last_name" placeholder="Enter Last Name" required>
+          <div class="invalid-feedback">
+            Last Name Required
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-6">
+          <label for="inputDepartment">Department</label>
+          <select name="department" class="form-control is-invalid" id="inputAddress" class="form-control" required>
+            <option disabled selected value>Choose Department...</option>
+            {{#each departments}}
+              <option value="{{this.did}}">{{this.did}} - {{this.name}}</option>
+            {{/each}}
+          </select>
+          <div class="invalid-feedback">
+            Department Required
+          </div>
+        </div>
+        <div class="col-md-6 mb-6">
+          <label for="inputSpecialty"> Primary Specialty (Optional)</label>
+          <select name="specialty" class="form-control is-valid" id="inputAddress" class="form-control">
+            <option disabled selected value>Choose Primary Specialty...</option>
+            {{#each specialty}}
+              <option value="{{this.sid}}">{{this.sid}} - {{this.name}}</option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2 mb-3"></div>
+        <div class="form-group col-md-4">
+          <label for="inputAddress">Address</label>
+          <select name="address" class="form-control is-invalid" id="inputAddress" class="form-control" required>
+            <option disabled selected value>Choose Address...</option>
+            {{#each addresses}}
+              <option value="{{this.aid}}">{{this.aid}} - {{this.streetNum}} {{this.streetName}} {{this.unit}}, {{this.city}}, {{this.state}} {{this.zip}}</option>
+            {{/each}}
+          </select>
+          <div class="invalid-feedback">
+            Address Required
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationServer11">Phone Number</label>
+          <input type="tel" class="form-control is-invalid" id="validationServer11" name="phone" placeholder="Enter Phone Number (ie. 5555555555)" required>
+          <div class="invalid-feedback">
+            Phone Number Required
+          </div>
+        </div>
+        <div class="col-md-2 mb-3"></div>
+        </div>
+
+      <button class="btn btn-dark" type="submit" value="Submit">Insert New Doctor</button>
+    </form>
+
+
+  </div>
+
+      <div id="heading" class="jumbotron event">
+        <h1 class="display-title"><i class="fa fa-list" aria-hidden="true"></i> Current Doctor List</h1>
+          <hr class="my-4">
+          <div class="inner-event">
+            <table>
+              <caption>Hosptial Doctor Information</caption>
+              <thead>
+                <tr>
+                  <th>Employee ID</th>
+                  <th>Last Name</th>
+                  <th>First Name</th>
+                  <th>Middle Name</th>
+                  <th>Department</th>
+                  <!-- <th>Specialties</th> -->
+                  <th>Street Number</th>
+                  <th>Street Name</th>
+                  <th>Unit</th>
+                  <th>City</th>
+                  <th>State</th>
+                  <th>ZIP</th>
+                  <th>Phone Number</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each superDoc}}
+                  <tr>
+                    <td>{{this.eid}}</td>
+                    <td>{{this.last_name}}</td>
+                    <td>{{this.first_name}}</td>
+                    <td>{{this.middle_name}}</td>
+                    <td>{{this.depart}}</td>
+                    <!-- <td>{{this.special}}</td> -->
+                    <td>{{this.streetNum}}</td>
+                    <td>{{this.streetName}}</td>
+                    <td>{{this.unit}}</td>
+                    <td>{{this.city}}</td>
+                    <td>{{this.state}}</td>
+                    <td>{{this.zip}}</td>
+                    <td>{{this.phone}}</td>
+                    <form action="/doctors:{{this.eid}}" method="link">
+                      <td class="update_button"><button type="submit" class="btn btn-warning">Update</button></td>
+                    </form>
+                    <form action="/deletedoctor:{{this.eid}}" method="link">
+                      <td class="delete_button"><button type="submit" class="btn btn-danger">Delete</button></td>
+                    </form>
+                  </tr>
+                {{/each}}
+              </tbody>
+            </table>
+
+
+          </div>
+      </div>
+    </div>

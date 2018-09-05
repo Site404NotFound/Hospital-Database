@@ -1,0 +1,98 @@
+<div id="headcont"class="container">
+      <div id="heading" class="jumbotron">
+        <h1 class="display-3">
+          <i class="fa fa-pencil-square" aria-hidden="true"></i>
+          Update Doctor
+          {{#each doctors}}
+            <em>{{this.last_name}}, {{this.first_name}}</em>
+        </h1>
+        <p class="lead">
+          St. Generic's Hospital Staff
+        </p>
+        <hr class="my-4">
+        <form id="updatedoctor" action="/doctors:{{this.eid}}" method="post">
+                              {{/each}}
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              {{#each doctors}}
+              <label for="validationServer01">Update First Name</label>
+              <input type="text" class="form-control is-invalid" id="validationServer01" value="{{this.first_name}}"name="first_name" placeholder="Enter First Name" required>
+              <div class="invalid-feedback">
+                First Name Required
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="validationServer02">Update Middle Name</label>
+              <input type="text" class="form-control is-valid" id="validationServer02" value="{{this.middle_name}}"name="middle_name" placeholder=" Enter Middle Name (Optional)">
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="validationServer03">Update Last Name</label>
+              <input type="text" class="form-control is-invalid" id="validationServer03"
+               name="last_name" value="{{this.last_name}}"placeholder="Enter Last Name" required>
+              <div class="invalid-feedback">
+                Last Name Required
+              </div>
+            </div>
+            {{/each}}
+          </div>
+          <div class="row">
+            <div class="col-md-3 mb-3"></div>
+            <div class="col-md-6 mb-3">
+              <label for="inputDepartment">Update Department</label>
+              <select name="department" class="form-control is-invalid" id="inputAddress" class="form-control" required>
+                {{#each doctors}}
+                <option value="{{this.department_id}}"selected>{{this.department_id}} - Current Department ID</option>
+                {{/each}}
+                {{#each departments}}
+                  <option value="{{this.did}}">{{this.did}} - {{this.name}}</option>
+                {{/each}}
+              </select>
+              <div class="invalid-feedback">
+                Department Required
+              </div>
+            </div>
+            <!-- <div class="col-md-6 mb-6">
+              <label for="inputSpecialty">Update Primary Specialty (Optional)</label>
+              <select name="specialty" class="form-control is-valid" id="inputAddress" class="form-control">
+                {{#each specialty_select}}
+                <option value="{{this.sid}}"selected>{{this.sid}} - Current Specialty ID</option>
+                {{/each}}
+                {{#each specialty}}
+                  <option value="{{this.sid}}">{{this.sid}} - {{this.name}}</option>
+                {{/each}}
+              </select>
+            </div> -->
+            <div class="col-md-3 mb-3"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 mb-3"></div>
+            <div class="form-group col-md-4">
+              <label for="inputAddress">Update Address</label>
+              <select name="address" class="form-control is-invalid" id="inputAddress" class="form-control" required>
+                {{#each doctors}}
+                <option value="{{this.address_id}}" selected>{{this.address_id}} - Current Address ID</option>
+                {{/each}}
+                {{#each addresses}}
+                  <option value="{{this.aid}}">{{this.aid}} - {{this.streetNum}} {{this.streetName}} {{this.unit}}, {{this.city}}, {{this.state}} {{this.zip}}</option>
+                {{/each}}
+              </select>
+              <div class="invalid-feedback">
+                Address Required
+              </div>
+            </div>
+            {{#each doctors}}
+            <div class="col-md-4 mb-3">
+              <label for="validationServer11">Update Phone Number</label>
+              <input type="tel" class="form-control is-invalid" id="validationServer11" name="phone" value="{{this.phone}}" placeholder="Enter Phone Number (ie. 5555555555)" required>
+              <div class="invalid-feedback">
+                Phone Number Required
+              </div>
+            </div>
+            <div class="col-md-2 mb-3"></div>
+            </div>
+            {{/each}}
+          <button class="btn btn-dark" type="submit" value="Submit">Update Doctor</button>
+        </form>
+
+
+      </div>

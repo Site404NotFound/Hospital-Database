@@ -1,0 +1,55 @@
+<div id="headcont"class="container">
+  <div id="heading" class="jumbotron">
+    <h1 class="display-3">
+      <i class="fa fa-building" aria-hidden="true"></i>
+      Departments</h1>
+    <p class="lead">
+      St. Generic's Departments
+    </p>
+    <hr class="my-4">
+        <h1 class="display-title"><i class="fa fa-plus-circle" aria-hidden="true"></i> Insert New Department</h1>
+    <form id="adddepartment" action="/departmentinserts" method="post">
+      <div class="row">
+        <div class="col-md-4 mb-3"></div>
+        <div class="col-md-4 mb-3">
+          <label for="validationServer01">Department Name</label>
+          <input type="text" class="form-control is-invalid" id="validationServer01" name="department_name" placeholder="Enter Department Name" required>
+          <div class="invalid-feedback">
+            Department Name Required
+          </div>
+        </div>
+        <div class="col-md-4 mb-3"></div>
+      </div>
+
+      <button class="btn btn-dark" type="submit" value="Submit">Create New Department</button>
+    </form>
+  </div>
+    <div id="heading" class="jumbotron event">
+      <h1 class="display-title"><i class="fa fa-list" aria-hidden="true"></i> Current Department List</h1>
+        <hr class="my-4">
+    <table>
+      <caption>Hosptial Department Information</caption>
+      <thead>
+        <tr>
+          <th>Department ID</th>
+          <th>Department Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each departments}}
+        <tr>
+            <td>{{this.did}}</td>
+            <td>{{this.name}}</td>
+            <form action="/departments:{{this.did}}" method="link">
+              <td class="update_button"><button type="submit" class="btn btn-warning">Update</button></td>
+            </form>
+            <!-- <form action="/deletedepart:{{this.did}}" method="link">
+              <td class="delete_button"><button type="submit" class="btn btn-danger">Delete</button></td>
+            </form> -->
+          </tr>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

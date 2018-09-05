@@ -1,0 +1,32 @@
+<div id="headcont"class="container">
+        <div id="heading" class="jumbotron event">
+          <h1 class="display-title"><i class="fa fa-list" aria-hidden="true"></i> All Patients Who Live In Zipcode <em>{{zip_input}}</em></h1>
+            <hr class="my-4">
+            <div class="inner-event">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Specialty</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each zipcode_patient}}
+                    <tr>
+                      <td>{{this.last_name}}</td>
+                      <td>{{this.first_name}}</td>
+                      <td>{{this.zip}}</td>
+                    </tr>
+                  {{/each}}
+                </tbody>
+              </table>
+      </div>
+      <br>
+      <a href="/query">
+        <button type="button" class="btn btn-outline-dark">
+          Back to Search
+        </button>
+          </a>
+    </div>
+    </div>

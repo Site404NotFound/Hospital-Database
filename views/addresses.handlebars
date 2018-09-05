@@ -1,0 +1,145 @@
+<div id="headcont"class="container">
+  <div id="heading" class="jumbotron">
+    <h1 class="display-3">
+      <i class="fa fa-address-card" aria-hidden="true"></i></i>
+      Employee & Patient Address Information
+    </h1>
+    <p class="lead">St. Generic's Address List</p>
+    <hr class="my-4">
+    <h1 class="display-title"><i class="fa fa-plus-circle" aria-hidden="true"></i> Insert New Address</h1>
+  <form id="addressadd" action="/addressinserts" method="post">
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label for="validationServer06">Street Number</label>
+        <input type="number" class="form-control is-valid" id="validationServer06" name="street_number" placeholder="Enter Street Number">
+        <div class="invalid-feedback">
+          Street Number Required
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationServer07">Street Name</label>
+        <input type="text" class="form-control is-valid" id="validationServer07" name="street_name" placeholder="Enter Street Name">
+        <div class="invalid-feedback">
+          Street Name Required
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="validationServer08">Unit Number</label>
+        <input type="number" class="form-control is-valid" id="validationServer08" name="unit" placeholder="Enter Unit Number">
+      </div>
+
+    </div>
+        <div class="row">
+      <div class="col-md-1 mb-3"></div>
+      <div class="col-md-4 mb-3">
+        <label for="validationServer09">City</label>
+        <input type="text" class="form-control is-valid" id="validationServer09" name="city" placeholder="Enter City">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputState">State</label>
+        <select class="form-control is-valid" name="state" id="inputState" class="form-control">
+          <option disabled selected value>Choose State...</option>
+          <option value="AL">AL</option>
+          <option value="AR">AR</option>
+          <option value="AZ">AZ</option>
+          <option value="CA">CA</option>
+          <option value="CO">CO</option>
+          <option value="CT">CT</option>
+          <option value="DE">DE</option>
+          <option value="FL">FL</option>
+          <option value="GA">GA</option>
+          <option value="HA">HI</option>
+          <option value="IA">IA</option>
+          <option value="ID">ID</option>
+          <option value="IL">IL</option>
+          <option value="IN">IN</option>
+          <option value="KS">KS</option>
+          <option value="KY">KY</option>
+          <option value="LA">LA</option>
+          <option value="MA">MA</option>
+          <option value="MD">MD</option>
+          <option value="ME">ME</option>
+          <option value="MI">MI</option>
+          <option value="MN">MN</option>
+          <option value="MO">MO</option>
+          <option value="MS">MS</option>
+          <option value="MT">MT</option>
+          <option value="NC">NC</option>
+          <option value="ND">ND</option>
+          <option value="NE">NE</option>
+          <option value="NH">NH</option>
+          <option value="NJ">NJ</option>
+          <option value="NM">NM</option>
+          <option value="NV">NV</option>
+          <option value="NY">NY</option>
+          <option value="OH">OH</option>
+          <option value="OK">OK</option>
+          <option value="OR">OR</option>
+          <option value="PA">PA</option>
+          <option value="RI">RI</option>
+          <option value="SC">SC</option>
+          <option value="SD">SD</option>
+          <option value="TN">TN</option>
+          <option value="TX">TX</option>
+          <option value="UT">UT</option>
+          <option value="VA">VA</option>
+          <option value="VT">VT</option>
+          <option value="WA">WA</option>
+          <option value="WI">WI</option>
+          <option value="WV">WV</option>
+          <option value="WY">WY</option>
+          <option value="DC">DC</option>
+        </select>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationServer10">ZIP Code</label>
+        <input type="number" maxlength="5" class="form-control is-valid" id="validationServer10" name="zip" placeholder="Enter ZIP Code" value=''>
+      <div class="col-md-1 mb-1"></div>
+</div>
+</div>
+    <button class="btn btn-dark" type="submit" value="Submit">Insert New Address</button>
+  </form>
+
+</div>
+<div id="heading" class="jumbotron event">
+  <h1 class="display-title"><i class="fa fa-list" aria-hidden="true"></i> Current Address List</h1>
+    <hr class="my-4">
+    <div class="inner-event">
+    <table>
+      <caption>Employee Address Information</caption>
+      <thead>
+        <tr>
+          <th>Address ID</th>
+          <th>Street Number</th>
+          <th>Street Name</th>
+          <th>Unit</th>
+          <th>City</th>
+          <th>State</th>
+          <th>ZIP</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each addresses}}
+        <tr>
+          <td>{{this.aid}}</td>
+          <td>{{this.streetNum}}</td>
+          <td>{{this.streetName}}</td>
+          <td>{{this.unit}}</td>
+          <td>{{this.city}}</td>
+          <td>{{this.state}}</td>
+          <td>{{this.zip}}</td>
+          <form action="/addresses:{{this.aid}}" method="link">
+            <td class="update_button"><button type="submit" class="btn btn-warning">Update</button></td>
+          </form>
+        <!-- <form action="/deleteaddr:{{this.aid}}" method="link">
+          <td class="delete_button"><button type="submit" class="btn btn-danger">Delete</button></td>
+        </form> -->
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+  </div>
+</div>
+</div>

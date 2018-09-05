@@ -1,0 +1,39 @@
+<div id="headcont"class="container">
+  <div id="heading" class="jumbotron">
+    <h1 class="display-3">
+      <i class="fa fa-random" aria-hidden="true"></i>
+      Doctor <> Specialties</h1>
+    <p class="lead">
+      St. Generic's Doctor Specialties
+    </p>
+    <hr class="my-4">
+    <form id="dsadd" action="/dsinsert" method="post">
+      <div class="row">
+        <div class="col-md-4 mb-3"></div>
+        <div class="col-md-4 mb-3">
+          <label for="validationServer01">Specialty Name</label>
+          <select name="specialty">
+		{{#each specialty}}
+		<option value="{{this.sid}}">{{this.specialtyName}}</options>
+		{{/each}}
+	</select><br>
+          <div class="invalid-feedback">
+            Specialty ID Required
+          </div>
+          <label for="validationServer01">Doctor Name</label>
+          <select name="doctors">
+		{{#each doctors}}
+		<option value="{{this.eid}}">{{this.first_name}}</options>
+		{{/each}}
+	</select><br>
+          <div class="invalid-feedback">
+            Doctor Name Required
+          </div>
+        </div>
+        <div class="col-md-4 mb-3"></div>
+      </div>
+
+
+      <button class="btn btn-dark" type="submit" value="Submit">Create New Specialty</button>
+    </form>
+</div>

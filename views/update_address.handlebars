@@ -1,0 +1,105 @@
+<div id="headcont"class="container">
+  <div id="heading" class="jumbotron">
+    <h1 class="display-3">
+      <i class="fa fa-pencil-square" aria-hidden="true"></i>
+      Update Address <br><br>
+      {{#each addresses}}
+        <em>{{this.streetNum}} {{this.streetName}} {{this.unit}},<br> {{this.city}}, {{this.state}} {{this.zip}}</em>
+    </h1>
+    <hr class="my-4">
+    <form id="addressupdate" action="/addresses:{{aid}}" method="post">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label for="validationServer06">Update Street Number</label>
+          <input type="number" class="form-control is-valid" id="validationServer06" name="street_number" value="{{this.streetNum}}" placeholder="Enter Street Number">
+          <div class="invalid-feedback">
+            Street Number Required
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationServer07">Update Street Name</label>
+          <input type="text" class="form-control is-valid" id="validationServer07" name="street_name" value="{{this.streetName}}" placeholder="Enter Street Name">
+          <div class="invalid-feedback">
+            Street Name Required
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <label for="validationServer08">Unit Number</label>
+          <input type="number" class="form-control is-valid" id="validationServer08" value="{{this.unit}}"name="unit" placeholder="Enter Unit Number">
+        </div>
+
+      </div>
+          <div class="row">
+        <div class="col-md-1 mb-3"></div>
+        <div class="col-md-4 mb-3">
+          <label for="validationServer09">Update City</label>
+          <input type="text" class="form-control is-valid" id="validationServer09" value="{{this.city}}"name="city" placeholder="Enter City">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputState">Update State</label>
+          <select class="form-control is-valid" name="state" id="inputState" class="form-control">
+            <option value="{{this.state}}" selected>{{this.state}}</option>
+            <option value="AL">AL</option>
+            <option value="AR">AR</option>
+            <option value="AZ">AZ</option>
+            <option value="CA">CA</option>
+            <option value="CO">CO</option>
+            <option value="CT">CT</option>
+            <option value="DE">DE</option>
+            <option value="FL">FL</option>
+            <option value="GA">GA</option>
+            <option value="HA">HI</option>
+            <option value="IA">IA</option>
+            <option value="ID">ID</option>
+            <option value="IL">IL</option>
+            <option value="IN">IN</option>
+            <option value="KS">KS</option>
+            <option value="KY">KY</option>
+            <option value="LA">LA</option>
+            <option value="MA">MA</option>
+            <option value="MD">MD</option>
+            <option value="ME">ME</option>
+            <option value="MI">MI</option>
+            <option value="MN">MN</option>
+            <option value="MO">MO</option>
+            <option value="MS">MS</option>
+            <option value="MT">MT</option>
+            <option value="NC">NC</option>
+            <option value="ND">ND</option>
+            <option value="NE">NE</option>
+            <option value="NH">NH</option>
+            <option value="NJ">NJ</option>
+            <option value="NM">NM</option>
+            <option value="NV">NV</option>
+            <option value="NY">NY</option>
+            <option value="OH">OH</option>
+            <option value="OK">OK</option>
+            <option value="OR">OR</option>
+            <option value="PA">PA</option>
+            <option value="RI">RI</option>
+            <option value="SC">SC</option>
+            <option value="SD">SD</option>
+            <option value="TN">TN</option>
+            <option value="TX">TX</option>
+            <option value="UT">UT</option>
+            <option value="VA">VA</option>
+            <option value="VT">VT</option>
+            <option value="WA">WA</option>
+            <option value="WI">WI</option>
+            <option value="WV">WV</option>
+            <option value="WY">WY</option>
+            <option value="DC">DC</option>
+          </select>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationServer10">Update ZIP Code</label>
+          <input type="number" maxlength="5" class="form-control is-valid" id="validationServer10" name="zip" value="{{this.zip}}" placeholder="Enter ZIP Code">
+        <div class="col-md-1 mb-1"></div>
+  </div>
+  </div>
+      <button class="btn btn-dark" type="submit" value="Submit">Update Address</button>
+    </form>
+  </div>
+</div>
+      {{/each}}

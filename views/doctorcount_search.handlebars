@@ -1,0 +1,32 @@
+<div id="headcont"class="container">
+        <div id="heading" class="jumbotron event">
+          <h1 class="display-title"><i class="fa fa-list" aria-hidden="true"></i> Number of Doctors In The <em>{{doctordepart_search.0.Department_Name}}</em> Department</h1>
+            <hr class="my-4">
+            <div class="inner-event">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Department Name</th>
+                    <th>Doctors Staffed</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each doctordepart_search}}
+                    <tr>
+                      <td>{{this.Department_Name}}</td>
+                      <td>{{this.Doctors_Staffed}}</td>
+                    </tr>
+                  {{/each}}
+                </tbody>
+              </table>
+      </div>
+      <br>
+      <a href="/query">
+        <button type="button" class="btn btn-outline-dark">
+          Back to Search
+        </button>
+          </a>
+    </div>
+
+
+</div>

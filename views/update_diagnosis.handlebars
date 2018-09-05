@@ -1,0 +1,45 @@
+<div id="headcont"class="container">
+  <div id="heading" class="jumbotron">
+    <h1 class="display-3">
+      <i class="fa fa-pencil-square" aria-hidden="true"></i>
+      Update Diagnosis
+      {{#each diagnosis}}
+        <em>{{this.name}}</em>
+    </h1>
+    <hr class="my-4">
+    <form id="diagnosisupdate" action="/diagnosis:{{diid}}" method="post">
+      <div class="row">
+        <div class="col-md-3 mb-3"></div>
+        <div class="col-md-4 mb-3">
+          <label for="validationServer01">Update Diagnosis Name</label>
+          <input type="text" class="form-control is-invalid" id="validationServer01" name="diagnosis_name" value="{{this.name}}"placeholder="Enter Diagnosis name" required>
+          <div class="invalid-feedback">
+            Diagnosis Name Required
+          </div>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputSeverity"> Update Severity</label>
+          <select name="severity" class="form-control is-invalid" id="inputSeverity" class="form-control" required>
+            <option value="{{this.severity}} selected">Current Severity - {{this.severity}}</option>
+            <option value="1">1 - No Pain</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10 - Critical</option>
+          </select>
+          <div class="invalid-feedback">
+            Severity Required
+          </div>
+        </div>
+        <div class="col-md-3 mb-3"></div>
+      </div>
+            <button class="btn btn-dark" type="submit" value="Submit">Update Diagnosis</button>
+    </form>
+  </div>
+</div>
+      {{/each}}

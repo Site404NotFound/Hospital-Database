@@ -1,0 +1,141 @@
+<div id="headcont"class="container">
+  <div id="heading" class="jumbotron">
+    <h1 class="display-3">
+      <i class="fa fa-search" aria-hidden="true"></i>
+      Search Database
+    </h1>
+    <p class="lead">Database Search Options</p>
+    <hr class="my-4">
+
+
+<!-- Search all doctors with a certain specialty -->
+<!-- Search all patients who live in a certain zipcode -->
+<!-- Search all patients who have a disease severity greater than a certain number -->
+<!-- Search all patients who have a disease severity lower than a certain number -->
+<!-- Get the count of all doctors in a certain department -->
+<!-- Get the count of all patients in a certain department -->
+<form id="specialtyadd" action="/specialtysearch" method="post">
+  <div class="row">
+    <div class="form-group col-md-4"></div>
+    <div class="form-group col-md-4">
+      <label for="inputSeverity">Search All Doctors With A Certain Specialty</label>
+      <select name="specialty" class="form-control" id="inputSpecialty" class="form-control" required>
+        <option disabled selected value>Choose Specialty to Search...</option>
+        {{#each specialty}}
+          <option value="{{this.name}}">{{this.sid}} - {{this.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="col-md-4 mb-3"></div>
+  </div>
+  <button class="btn btn-dark" type="submit" value="Submit">Search</button>
+</form>
+  <hr class="my-4">
+
+    <form id="zipcodesearch" action="/zipcodesearch" method="post">
+      <div class="row">
+        <div class="form-group col-md-4"></div>
+    <div class="form-group col-md-4">
+      <label for="zipcodesearch">Search All Patients Who Live In A Certain Zipcode</label>
+      <select name="zipcode" class="form-control" id="inputSeverity" class="form-control" required>
+        <option disabled selected value>Choose ZIP to Search...</option>
+        {{#each zipaddress}}
+        <option value="{{this.zip}}">{{this.zip}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="col-md-4 mb-3"></div>
+
+    </div>
+        <button class="btn btn-dark" type="submit" value="Submit">Search</button>
+      </form>
+
+  <hr class="my-4">
+        <form id="severitysearch" action="/greaterseverity" method="post">
+          <div class="row">
+            <div class="form-group col-md-4"></div>
+        <div class="form-group col-md-4">
+          <label for="severitysearch">Search All Patients With A Diagnosis Severity Greater Than A Certain Number</label>
+          <select name="greater_severity" class="form-control" id="inputSeverity" class="form-control" required>
+            <option disabled selected value>Choose Severity to Search...</option>
+            <option value="1">1 - No Pain</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10 - Critical</option>
+          </select>
+        </div>
+        <div class="col-md-4 mb-3"></div>
+
+        </div>
+            <button class="btn btn-dark" type="submit" value="Submit">Search</button>
+            </form>
+  <hr class="my-4">
+            <form id="severitysearch" action="/lesserseverity" method="post">
+              <div class="row">
+                <div class="form-group col-md-4"></div>
+            <div class="form-group col-md-4">
+              <label for="inputSeverity">Search All Patients With A Diagnosis Severity Lower Than A Certain Number</label>
+              <select name="lesser_severity" class="form-control" id="inputSeverity" class="form-control" required>
+                <option disabled selected value>Choose Severity to Search...</option>
+                <option value="1">1 - No Pain</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10 - Critical</option>
+              </select>
+            </div>
+            <div class="col-md-4 mb-3"></div>
+
+            </div>
+                <button class="btn btn-dark" type="submit" value="Submit">Search</button>
+                </form>
+  <hr class="my-4">
+            <form id="doctorcount" action="/doctorcount" method="post">
+              <div class="row">
+                <div class="form-group col-md-4"></div>
+            <div class="form-group col-md-4">
+              <label for="doctorcount">Get The Count Of All Doctors In A Certain Department</label>
+              <select name="doctor_department_count" class="form-control" id="doctorcount" class="form-control" required>
+                <option disabled selected value>Choose Department to Search...</option>
+                {{#each departments}}
+                <option value="{{this.did}}">{{this.did}} - {{this.name}}</option>
+                {{/each}}
+              </select>
+            </div>
+            <div class="col-md-4 mb-3"></div>
+
+            </div>
+                <button class="btn btn-dark" type="submit" value="Submit">Search</button>
+                </form>
+  <hr class="my-4">
+                <form id="patientcount" action="/patientcount" method="post">
+                  <div class="row">
+                    <div class="form-group col-md-4"></div>
+                <div class="form-group col-md-4">
+                  <label for="patientcount">Get The Count Of All Patients In A Certain Department</label>
+                  <select name="patient_department_count" class="form-control" id="patientcount" class="form-control" required>
+                    <option disabled selected value>Choose Department to Search...</option>
+                    {{#each departments}}
+                    <option value="{{this.did}}">{{this.did}} - {{this.name}}</option>
+                    {{/each}}
+                  </select>
+                </div>
+                <div class="col-md-4 mb-3"></div>
+
+                </div>
+                    <button class="btn btn-dark" type="submit" value="Submit">Search</button>
+                    </form>
+
+</div>
+</div>

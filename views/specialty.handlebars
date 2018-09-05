@@ -1,0 +1,114 @@
+<div id="headcont"class="container">
+  <div id="heading" class="jumbotron">
+    <h1 class="display-3">
+      <i class="fa fa-random" aria-hidden="true"></i>
+      Doctor Specialties</h1>
+    <p class="lead">
+      St. Generic's Doctor Specialties
+    </p>
+    <hr class="my-4">
+        <h1 class="display-title"><i class="fa fa-plus-circle" aria-hidden="true"></i> Insert New Specialty</h1>
+    <form id="specialtyadd" action="/specialtyinsert" method="post">
+      <div class="row">
+        <div class="col-md-4 mb-3"></div>
+        <div class="col-md-4 mb-3">
+          <label for="validationServer01">Specialty Name</label>
+          <input type="text" class="form-control is-invalid" id="validationServer01" name="specialty_name" placeholder="Enter Specialty Name" required>
+          <div class="invalid-feedback">
+            Specialty Name Required
+          </div>
+        </div>
+        <div class="col-md-4 mb-3"></div>
+      </div>
+      <button class="btn btn-dark" type="submit" value="Submit">Create New Specialty</button>
+    </form>
+    </div>
+      <div id="heading" class="jumbotron">
+  <h1 class="display-title"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Specialty to Doctors</h1>
+  <form id="specialtyadd" action="/doctorspecialty" method="post">
+    <div class="row">
+      <div class="col-md-2 mb-3"></div>
+      <div class="form-group col-md-4">
+        <label for="inputDoctor">Doctor</label>
+        <select name="docspec" class="form-control is-invalid" id="inputDoctor" class="form-control">
+          <option disabled selected value>Choose Doctor...</option>
+          {{#each doctors}}
+            <option value="{{this.eid}}">{{this.eid}} - {{this.last_name}}, {{this.first_name}}</option>
+          {{/each}}
+        </select>
+        <div class="invalid-feedback">
+          Doctor Required
+        </div>
+      </div>
+      <div class="col-md-4 mb-6">
+        <label for="inputSpecialty"> Specialty Name</label>
+        <select name="specdoc" class="form-control is-invalid" id="inputAddress" class="form-control" required>
+          <option disabled selected value>Choose Specialty...</option>
+          {{#each specialty}}
+            <option value="{{this.sid}}">{{this.sid}} - {{this.name}}</option>
+          {{/each}}
+        </select>
+        <div class="invalid-feedback">
+          Specialty Required
+        </div>
+      </div>
+      <div class="col-md-2 mb-3"></div>
+    </div>
+    <button class="btn btn-dark" type="submit" value="Submit">Add Specialty to Doctor</button>
+  </form>
+  </div>
+    <div id="heading" class="jumbotron event">
+      <h1 class="display-title"><i class="fa fa-list" aria-hidden="true"></i> Current Specialties List</h1>
+        <hr class="my-4">
+    <table>
+      <caption>Doctor Specialty Information</caption>
+      <thead>
+        <tr>
+          <th>Specialty ID</th>
+          <th>Specialty Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each specialty}}
+        <tr>
+            <td>{{this.sid}}</td>
+            <td>{{this.name}}</td>
+            <form action="/specialty:{{this.sid}}" method="link">
+              <td class="update_button"><button type="submit" class="btn btn-warning">Update</button></td>
+            </form>
+            <form action="/deletespec:{{this.sid}}" method="link">
+              <td class="delete_button"><button type="submit" class="btn btn-danger">Delete</button></td>
+            </form>
+          </tr>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <h1 class="display-title"><i class="fa fa-list" aria-hidden="true"></i> Current Doctor's Specialty List</h1>
+      <hr class="my-4">
+  <table>
+    <caption>Doctor Specialty Information</caption>
+    <thead>
+      <tr>
+        <th>Doctor Last Name</th>
+        <th>Doctor First Name</th>
+        <th>Specialty Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each docspectable}}
+      <tr>
+          <td>{{this.last_name}}</td>
+          <td>{{this.first_name}}</td>
+          <td>{{this.name}}</td>
+            <form action="/deleteDS:{{this.dsid}}" method="link">
+              <td class="delete_button"><button type="submit" class="btn btn-danger">Delete</button></td>
+            </form>
+        </tr>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  </div>
+</div>

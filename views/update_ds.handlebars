@@ -1,0 +1,148 @@
+<div id="headcont"class="container">
+  <div id="heading" class="jumbotron">
+    <h1 class="display-3">
+      <i class="fa fa-pencil-square" aria-hidden="true"></i>
+      Update Doctor <> Specialtys
+      {{#each doctors}}
+        <em>{{this.last_name}}, {{this.first_name}}</em>
+    </h1>
+    <hr class="my-4">
+    <form id="adddoctor" action="/doctors" method="post">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label for="validationServer01">Update First name</label>
+          <input type="text" class="form-control is-invalid" id="validationServer01" name="first_name" value="{{this.first_name}}" placeholder="Enter First name" required>
+          <div class="invalid-feedback">
+            First Name Required
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationServer02">Update Middle name</label>
+          <input type="text" class="form-control is-valid" id="validationServer02" name="middle_name" value="{{this.middle_name}}" placeholder=" Enter Middle name (Optional)">
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationServer03">Update Last name</label>
+          <input type="text" class="form-control is-invalid" id="validationServer03" name="last_name" value="{{this.last_name}}" placeholder="Enter Last name" required>
+          <div class="invalid-feedback">
+            Last Name Required
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-6">
+          <label for="validationServer04">Update Department</label>
+          <input type="text" class="form-control is-invalid" id="validationServer04" name="department_name" value="{{this.departmentName}}" placeholder="Enter Department" required>
+          <div class="invalid-feedback">
+            Department Required
+          </div>
+        </div>
+        <div class="col-md-6 mb-6">
+          <label for="validationServer05">Update Specialty</label>
+          <input type="text" class="form-control is-invalid" id="validationServer05" name="specialty" value="{{this.specialtyName}}" placeholder="Enter Specialty" required>
+          <div class="invalid-feedback">
+            Specialty Required.
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2 mb-3">
+          <label for="validationServer06">Update Street Number</label>
+          <input type="text" class="form-control is-invalid" id="validationServer06" name="street_number" value="{{this.streetNum}}" placeholder="Enter Street Number" required>
+          <div class="invalid-feedback">
+            Street Number Required
+          </div>
+        </div>
+        <div class="col-md-2 mb-3">
+          <label for="validationServer07">Update Street Name</label>
+          <input type="text" class="form-control is-invalid" id="validationServer07" name="street_name" value="{{this.streetName}}" placeholder="Enter Street Name" required>
+          <div class="invalid-feedback">
+            Street Name Required
+          </div>
+        </div>
+
+        <div class="col-md-2 mb-3">
+          <label for="validationServer08">Update Unit Number</label>
+          <input type="text" class="form-control is-valid" id="validationServer08" name="unit" value="{{this.unit}} "placeholder="Enter Unit Number (Optional)">
+        </div>
+        <div class="col-md-2 mb-3">
+          <label for="validationServer09">Update City</label>
+          <input type="text" class="form-control is-invalid" id="validationServer09" name="city" value="{{this.city}}" placeholder="Enter City" required>
+          <div class="invalid-feedback">
+            City Required
+          </div>
+        </div>
+        <div class="col-md-2 mb-3">
+          <label for="validationServer10">Update State</label>
+          <input type="text" class="form-control is-invalid" id="validationServer10" name="state" value="{{this.state}}" placeholder="Enter State (i.e. TX)" required>
+          <div class="invalid-feedback">
+            State Required
+          </div>
+        </div>
+        <div class="col-md-2 mb-3">
+          <label for="validationServer10">Update ZIP Code</label>
+          <input type="text" class="form-control is-invalid" id="validationServer10" name="zip" value="{{this.zip}}" placeholder="Enter ZIP Code)" required>
+          <div class="invalid-feedback">
+            ZIP Code Required
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-3"></div>
+        <div class="col-md-4 mb-3">
+          <label for="validationServer11">Update Phone Number</label>
+          <input type="text" class="form-control is-invalid" id="validationServer11" name="phone" value="{{this.doctorPhone}}" placeholder="Enter Phone Number (ie. 5555555555)" required>
+          <div class="invalid-feedback">
+            Phone Number Required.
+          </div>
+        </div>
+        <div class="col-md-4 mb-3"></div>
+        </div>
+
+      <button class="btn btn-dark" type="submit" value="Submit">Update Doctor</button>
+    </form>
+  </div>
+  <div id="heading" class="jumbotron event">
+    <h1 class="display-title">Current Information for {{this.last_name}}, {{this.first_name}}</h1>
+      <hr class="my-4">
+      <div class="inner-event">
+        <table>
+          <caption>{{this.last_name}}, {{this.first_name}} Information</caption>
+          <thead>
+            <tr>
+              <th>Employee ID</th>
+              <th>Last Name</th>
+              <th>First Name</th>
+              <th>Middle Name</th>
+              <th>Department</th>
+              <th>Specialty</th>
+              <th>Street Number</th>
+              <th>Street Name</th>
+              <th>Unit</th>
+              <th>City</th>
+              <th>State</th>
+              <th>ZIP</th>
+              <th>Phone Number</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <td>{{this.eid}}</td>
+                <td>{{this.last_name}}</td>
+                <td>{{this.first_name}}</td>
+                <td>{{this.middle_name}}</td>
+                <td>{{this.departmentName}}</td>
+                <td>{{this.specialtyName}}</td>
+                <td>{{this.streetNum}}</td>
+                <td>{{this.streetName}}</td>
+                <td>{{this.unit}}</td>
+                <td>{{this.city}}</td>
+                <td>{{this.state}}</td>
+                <td>{{this.zip}}</td>
+                <td>{{this.doctorPhone}}</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+        {{/each}}

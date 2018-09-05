@@ -1,0 +1,26 @@
+<div id="headcont"class="container">
+  <div id="heading" class="jumbotron">
+    <h1 class="display-3">
+      <i class="fa fa-pencil-square" aria-hidden="true"></i>
+      Update Department
+      {{#each departments}}
+        <em>{{this.name}}</em>
+    </h1>
+    <hr class="my-4">
+    <form id="departmentupdate" action="/departments:{{did}}" method="post">
+      <div class="row">
+        <div class="col-md-4 mb-3"></div>
+        <div class="col-md-4 mb-3">
+          <label for="validationServer01">Update Department Name</label>
+          <input type="text" class="form-control is-invalid" id="validationServer01" name="department_name_update" value="{{this.name}}" placeholder="Enter Department Name" required>
+          <div class="invalid-feedback">
+            Department Name Required
+          </div>
+        </div>
+        <div class="col-md-4 mb-3"></div>
+      </div>
+      <button class="btn btn-dark" onclick="updateDepartment({{this.did}})">Update Department</button>
+    </form>
+  </div>
+</div>
+      {{/each}}

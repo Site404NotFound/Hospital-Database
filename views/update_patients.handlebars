@@ -1,0 +1,123 @@
+<div id="headcont"class="container">
+  <div id="heading" class="jumbotron">
+    <h1 class="display-3">
+      {{#each patients}}
+      <i class="fa fa-pencil-square" aria-hidden="true"></i>
+      Update Patient <em>{{this.last_name}}, {{this.first_name}}</em>
+    </h1>
+
+    <hr class="my-4">
+  <form id="updatePatients" action="/patients:{{this.pid}}" method="post">
+        {{/each}}
+    <div class="row">
+      <div class="col-md-3 mb-3">
+        <label for="validationServer01">Update First Name</label>
+        {{#each patients}}
+        <input type="text" class="form-control is-invalid" id="validationServer01" name="first_name" value="{{this.first_name}}" placeholder="Enter First Name" required>
+        <div class="invalid-feedback">
+          First Name Required
+        </div>
+
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="validationServer02">Update Middle Name</label>
+        <input type="text" class="form-control is-valid" id="validationServer02" name="middle_name" value="{{this.middle_name}}" placeholder="Enter Middle Name (Optional)">
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="validationServer03">Update Last Name</label>
+        <input type="text" class="form-control is-invalid" id="validationServer03" name="last_name" value="{{this.last_name}}" placeholder="Enter Last Name" required>
+        <div class="invalid-feedback">
+          Last Name Required
+        </div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="validationServer11">Update Date Of Birth</label>
+        <input type="date" class="form-control is-valid" id="validationServer11" name="dob" value="{{this.birth}}" placeholder="Enter DOB (ie. YYYY-MM-DD)">
+      </div>
+    </div>
+            {{/each}}
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="inputAddress">Address</label>
+        <select name="address" class="form-control is-valid" id="inputAddress" class="form-control">
+          {{#each patients}}
+          <option value="{{this.address_id}}"selected>Current Address ID - {{this.address_id}}</option>
+          {{/each}}
+          <option value="">No Current Address</option>
+          {{#each addresses}}
+            <option value="{{this.aid}}">{{this.aid}} - {{this.streetNum}} {{this.streetName}} {{this.unit}}, {{this.city}}, {{this.state}} {{this.zip}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="col-md-3 mb-3">
+        {{#each patients}}
+        <label for="validationServer11">Phone Number</label>
+        <input type="tel" class="form-control is-invalid" id="validationServer11" name="phone" value="{{this.phone}}"placeholder="Enter Phone Number (ie. 5555555555)" required>
+        <div class="invalid-feedback">
+          Phone Number Required
+        </div>
+      </div>
+
+      <div class="form-group col-md-3">
+        <label for="inputInsurance">Insurance Provider</label>
+        <select name="insurance" class="form-control is-valid" id="inputInsurance" class="form-control">
+          <option value="{{this.insurance}}"selected>{{this.insurance}}</option>
+            <option value="">No Current Insurance</option>
+            <option value="USAA">USAA</option>
+            <option value="State Farm">State Farm</option>
+            <option value="All State">All State</option>
+            <option value="Liberty Mutual">Liberty Mutual</option>
+            <option value="Progressive">Progressive</option>
+            <option value="Nationwide">Nationwide</option>
+            <option value="Farmers">Farmers</option>
+            <option value="American Family">American Family</option>
+            <option value="American Financial">American Financial</option>
+            <option value="Berkshire Hathaway">Berkshire Hathaway</option>
+        </select>
+      </div>
+    </div>
+          {{/each}}
+    <div class="row">
+      <div class="form-group col-md-1"></div>
+      <div class="form-group col-md-3">
+        <label for="inputDoctor">Doctor</label>
+        {{#each patients}}
+        <select name="doctor" class="form-control is-valid" id="inputDoctor" class="form-control">
+          <option value="{{this.doctor_id}}" selected>Current Doctor ID - {{this.doctor_id}}</option>
+          {{/each}}
+          <option value="">No Current Doctor</option>
+          {{#each doctors}}
+            <option value="{{this.eid}}">{{this.eid}} - {{this.last_name}}, {{this.first_name}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="form-group col-md-4">
+        {{#each patients}}
+        <label for="inputDepartment">Department</label>
+        <select name="department" class="form-control is-valid" id="inputDepartment" class="form-control">
+          <option value="{{this.department_id}}"selected>Current Department ID - {{this.department_id}}</option>
+          {{/each}}
+          <option value="">No Current Department</option>
+          {{#each departments}}
+            <option value="{{this.did}}">{{this.did}} - {{this.name}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        {{#each patients}}
+        <label for="inputDiagnosis">Diagnosis</label>
+        <select name="diagnosis" class="form-control is-valid" id="inputDiagnosis" class="form-control">
+          <option value="{{this.diagnosis_id}}"selected>Current Diagnosis ID - {{this.diagnosis_id}}</option>
+          {{/each}}
+          <option value="">No Current Diagnosis</option>
+          {{#each diagnosis}}
+            <option value="{{this.diid}}">{{this.diid}} - {{this.name}} (Severity: {{this.severity}})</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="form-group col-md-1"></div>
+    </div>
+    <button class="btn btn-dark" type="submit" value="Submit">Update Patient</button>
+  </form>
+</div>
+</div>

@@ -1,0 +1,78 @@
+<div id="headcont"class="container">
+  <div id="heading" class="jumbotron">
+    <h1 class="display-3">
+      <i class="fa fa-thermometer-half" aria-hidden="true"></i>
+      Patient Diagnosis</h1>
+    <p class="lead">
+      St. Generic's Patient Diagnosis
+    </p>
+    <hr class="my-4">
+        <h1 class="display-title"><i class="fa fa-plus-circle" aria-hidden="true"></i> Insert New Diagnosis</h1>
+    <form id="specialtyadd" action="/diagnosisinsert" method="post">
+      <div class="row">
+        <div class="col-md-3 mb-3"></div>
+        <div class="col-md-4 mb-3">
+          <label for="validationServer01">Diagnosis Name</label>
+          <input type="text" class="form-control is-invalid" id="validationServer01" name="diagnosis_name" placeholder="Enter Diagnosis name" required>
+          <div class="invalid-feedback">
+            Diagnosis Name Required
+          </div>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputSeverity">Severity</label>
+          <select name="severity" class="form-control is-invalid" id="inputSeverity" class="form-control" required>
+            <option disabled selected value>Choose Severity...</option>
+            <option value="1">1 - No Pain</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10 - Critical</option>
+          </select>
+          <div class="invalid-feedback">
+            Severity Required
+          </div>
+        </div>
+        <div class="col-md-3 mb-3"></div>
+      </div>
+
+
+
+      <button class="btn btn-dark" type="submit" value="Submit">Create New Diagnosis</button>
+    </form>
+  </div>
+    <div id="heading" class="jumbotron event">
+      <h1 class="display-title"><i class="fa fa-list" aria-hidden="true"></i> Current Diagnosis List</h1>
+        <hr class="my-4">
+    <table>
+      <caption>Patient Diagnosis Information</caption>
+      <thead>
+        <tr>
+          <th>Diagnosis ID</th>
+          <th>Diagnosis Name</th>
+          <th>Severity</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each diagnosis}}
+        <tr>
+            <td>{{this.diid}}</td>
+            <td>{{this.name}}</td>
+            <td>{{this.severity}}</td>
+            <form action="/diagnosis:{{this.diid}}" method="link">
+              <td class="update_button"><button type="submit" class="btn btn-warning">Update</button></td>
+            </form>
+            <!-- <form action="/deletediags:{{this.diid}}" method="link">
+              <td class="delete_button"><button type="submit" class="btn btn-danger">Delete</button></td>
+            </form> -->
+          </tr>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
